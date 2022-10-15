@@ -4,8 +4,8 @@ var Razorpay=require("razorpay");
 var bodyParser = require('body-parser')
 
 let instance = new Razorpay({
-  key_id: '<your key>', // your `KEY_ID`
-  key_secret: '<your secret>' // your `KEY_SECRET`
+  key_id: '<rzp_live_S6A7V4k9kZ64DI>',
+  key_secret: '<ukTdHAZVNNCUZzGub1W42tHR>'
 })
 
 
@@ -29,7 +29,7 @@ instance.orders.create(params).then((data) => {
 app.post("/api/payment/verify",(req,res)=>{
 body=req.body.razorpay_order_id + "|" + req.body.razorpay_payment_id;
 var crypto = require("crypto");
-var expectedSignature = crypto.createHmac('sha256', '<your secret>')
+var expectedSignature = crypto.createHmac('sha256', '<ukTdHAZVNNCUZzGub1W42tHR>')
                                 .update(body.toString())
                                 .digest('hex');
                                 console.log("sig"+req.body.razorpay_signature);
